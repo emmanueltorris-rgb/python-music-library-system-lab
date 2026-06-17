@@ -115,6 +115,63 @@ git checkout -b [name of branch]
 * Merge the PR into main after review.
 * Pull the new merged main branch locally and delete merged feature branch (optional)
 
+## Implementation ✅
+
+The Song class has been successfully implemented with all required features:
+
+### Class Overview
+
+The `Song` class in [lib/song.py](lib/song.py) represents individual songs while maintaining global insights about the entire music library. 
+
+### Instance Attributes
+- `name`: The title of the song
+- `artist`: The artist who performed the song
+- `genre`: The musical genre classification
+
+### Class Attributes
+- `count`: Total number of Song objects created (integer)
+- `genres`: Set of all unique genres across all songs
+- `artists`: Set of all unique artists across all songs
+- `genre_count`: Dictionary tracking the number of songs per genre (e.g., `{"Rap": 5, "Rock": 1}`)
+- `artist_count`: Dictionary tracking the number of songs per artist (e.g., `{"Beyonce": 17, "Jay-Z": 40}`)
+
+### Class Methods
+All methods are automatically triggered when a new song is created:
+
+- **`add_song_to_count()`**: Increments the total song count by 1
+- **`add_to_genres()`**: Adds the song's genre to the genres set (automatically handles uniqueness)
+- **`add_to_artists()`**: Adds the song's artist to the artists set (automatically handles uniqueness)
+- **`add_to_genre_count()`**: Updates the genre count dictionary (increments existing genres or adds new ones)
+- **`add_to_artist_count()`**: Updates the artist count dictionary (increments existing artists or adds new ones)
+
+### Usage Example
+
+```python
+from lib.song import Song
+
+# Create songs
+song1 = Song("99 Problems", "Jay Z", "Rap")
+song2 = Song("Halo", "Beyonce", "Pop")
+song3 = Song("Smells Like Teen Spirit", "Nirvana", "Rock")
+
+# Access global information
+print(f"Total songs: {Song.count}")  # Output: 3
+print(f"All genres: {Song.genres}")  # Output: {'Rap', 'Pop', 'Rock'}
+print(f"All artists: {Song.artists}")  # Output: {'Jay Z', 'Beyonce', 'Nirvana'}
+print(f"Genre counts: {Song.genre_count}")  # Output: {'Rap': 1, 'Pop': 1, 'Rock': 1}
+print(f"Artist counts: {Song.artist_count}")  # Output: {'Jay Z': 1, 'Beyonce': 1, 'Nirvana': 1}
+```
+
+### Testing
+
+All tests pass successfully! The test suite verifies:
+- ✅ Song attributes are correctly saved (name, artist, genre)
+- ✅ Song count increments with each new Song creation
+- ✅ Genres set maintains all unique genres
+- ✅ Artists set maintains all unique artists
+- ✅ Genre count dictionary tracks songs per genre
+- ✅ Artist count dictionary tracks songs per artist
+
 ### Task 4: Document and Maintain
 
 Best Practice documentation steps:
